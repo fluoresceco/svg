@@ -102,8 +102,10 @@ class Svg extends AbstractTag
         $attr['viewBox'] = "0 0 $this->width $this->height";
         $attr['xmlns'] = 'http://www.w3.org/2000/svg';
 
+        $definitionCode = '';
+
         if (count($this->definitions)) {
-            $definitionCode = '<defs>';
+            $definitionCode .= '<defs>';
 
             foreach ($this->definitions as $definition) {
                 $definitionCode .= $definition->write();

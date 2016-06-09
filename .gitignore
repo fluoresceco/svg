@@ -1,0 +1,3 @@
+tests/Fixtures/comparison-images/*
+!tests/Fixtures/comparison-images/.gitkeep
+vendor/*
