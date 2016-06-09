@@ -1,6 +1,8 @@
 Fluoresce SVG
 =============
 
+[![Build Status](https://travis-ci.org/fluoresceco/svg.svg?branch=master)](https://travis-ci.org/fluoresceco/svg)
+
 This library provides SVG drawing functions for PHP.
 
 ## Installation
