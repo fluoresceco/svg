@@ -1,0 +1,22 @@
+{
+    "name": "fluoresce/svg",
+    "description": "An SVG drawing library.",
+    "keywords": ["svg", "draw", "drawing", "graphics", "vector"],
+    "homepage": "https://github.com/fluoresceco/svg",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jaik Dean",
+            "email": "jaik@fluoresce.co"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9"
+    },
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Fluoresce\\Svg\\": "src/"
+        }
+    }
+}
