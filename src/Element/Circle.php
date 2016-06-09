@@ -2,7 +2,7 @@
 
 namespace Fluoresce\Svg\Element;
 
-use Fluoresce\Svg\AbstractElement;
+use Fluoresce\Svg\AbstractTag;
 use Fluoresce\Svg\ElementInterface;
 
 /**
@@ -10,12 +10,12 @@ use Fluoresce\Svg\ElementInterface;
  *
  * @author Jaik Dean <jaik@fluoresce.co>
  */
-class Circle extends AbstractElement implements ElementInterface
+class Circle extends AbstractTag implements ElementInterface
 {
     /**
-     * @var array Coordinates
+     * @var array Center point coordinates
      */
-    private $coordinates;
+    private $center;
 
     /**
      * @var float|int Radius
@@ -23,13 +23,13 @@ class Circle extends AbstractElement implements ElementInterface
     private $radius;
 
     /**
-     * @param array|null     $coordinates
+     * @param array|null     $center Centre point coordinates
      * @param float|int|null $radius
      */
-    public function __construct($coordinates = null, $radius = null)
+    public function __construct($center = null, $radius = null)
     {
-        if ($coordinates !== null) {
-            $this->setCoordinates($coordinates);
+        if ($center !== null) {
+            $this->setCenter($center);
         }
 
         if ($radius !== null) {
@@ -42,10 +42,10 @@ class Circle extends AbstractElement implements ElementInterface
      *
      * @return Circle
      */
-    public function setCoordinates($coordinates)
+    public function setCenter($coordinates)
     {
         $this->validateCoordinates($coordinates);
-        $this->coordinates = $coordinates;
+        $this->center = $coordinates;
 
         return $this;
     }
@@ -72,8 +72,8 @@ class Circle extends AbstractElement implements ElementInterface
 
         $attr = $this->attributes;
 
-        $attr['cx'] = $this->coordinates[0];
-        $attr['cy'] = $this->coordinates[1];
+        $attr['cx'] = $this->center[0];
+        $attr['cy'] = $this->center[1];
         $attr['r'] = $this->radius;
         // TODO fill, stroke, stroke-width
 

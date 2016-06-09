@@ -7,7 +7,7 @@ namespace Fluoresce\Svg;
  *
  * @author Jaik Dean <jaik@fluoresce.co>
  */
-class Svg extends AbstractElement
+class Svg extends AbstractTag
 {
     /**
      * @var int Width
@@ -23,6 +23,11 @@ class Svg extends AbstractElement
      * @var array Image elements
      */
     private $elements = [];
+
+    /**
+     * @var array SVG definitions
+     */
+    private $definitions = [];
 
     /**
      * @param int|null $width
@@ -78,6 +83,18 @@ class Svg extends AbstractElement
     }
 
     /**
+     * @param DefinitionInterface $definition
+     *
+     * @return Svg
+     */
+    public function addDefinition(DefinitionInterface $definition)
+    {
+        $this->definitions[] = $definition;
+
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function draw()
@@ -85,11 +102,23 @@ class Svg extends AbstractElement
         $attr['viewBox'] = "0 0 $this->width $this->height";
         $attr['xmlns'] = 'http://www.w3.org/2000/svg';
 
-        $contents = '';
+        if (count($this->definitions)) {
+            $definitionCode = '<defs>';
+
+            foreach ($this->definitions as $definition) {
+                $definitionCode .= $definition->write();
+            }
+
+            $definitionCode .= '</defs>';
+        }
+
+        $elementCode = '';
 
         foreach ($this->elements as $element) {
-            $contents .= $element->draw();
+            $elementCode .= $element->draw();
         }
+
+        $contents = $definitionCode . $elementCode;
 
         return $this->writeTag('svg', $attr, $contents);
     }

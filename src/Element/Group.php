@@ -2,7 +2,7 @@
 
 namespace Fluoresce\Svg\Element;
 
-use Fluoresce\Svg\AbstractElement;
+use Fluoresce\Svg\AbstractTag;
 use Fluoresce\Svg\ElementInterface;
 
 /**
@@ -10,7 +10,7 @@ use Fluoresce\Svg\ElementInterface;
  *
  * @author Jaik Dean <jaik@fluoresce.co>
  */
-class Group extends AbstractElement implements ElementInterface
+class Group extends AbstractTag implements ElementInterface
 {
     /**
      * @var array Elements
@@ -20,7 +20,7 @@ class Group extends AbstractElement implements ElementInterface
     /**
      * @param ElementInterface $element
      *
-     * @return Svg
+     * @return Group
      */
     public function addElement(ElementInterface $element)
     {

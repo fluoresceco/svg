@@ -3,11 +3,11 @@
 namespace Fluoresce\Svg;
 
 /**
- * Abstract element
+ * Abstract tag
  *
  * @author Jaik Dean <jaik@fluoresce.co>
  */
-abstract class AbstractElement
+abstract class AbstractTag
 {
     /**
      * @var array Attributes
@@ -19,7 +19,7 @@ abstract class AbstractElement
      *
      * @return AbstractElement
      */
-    protected function setAttributes($attributes)
+    public function setAttributes($attributes)
     {
         $this->attributes = $attributes;
 
@@ -32,7 +32,7 @@ abstract class AbstractElement
      *
      * @return AbstractElement
      */
-    protected function setAttribute($attribute, $value)
+    public function setAttribute($attribute, $value)
     {
         $this->attribute[$attribute] = $value;
 
@@ -78,7 +78,7 @@ abstract class AbstractElement
         }
 
         if ($contents !== false && mb_strlen($contents) > 0) {
-            $code .= ">$contents</$tag>"
+            $code .= ">$contents</$tag>";
         } else {
             $code .= ' />';
         }
