@@ -34,7 +34,7 @@ abstract class AbstractTag
      */
     public function setAttribute($attribute, $value)
     {
-        $this->attribute[$attribute] = $value;
+        $this->attributes[$attribute] = $value;
 
         return $this;
     }
